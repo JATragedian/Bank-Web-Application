@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+
+    <Appenders>
+        <RollingFile name="my-log"
+                     fileName="payments/logs/log.log"
+                     filePattern="payments/logs/log-%i.log"
+                     ignoreExceptions="false">
+            <PatternLayout>
+                <Pattern>%d %-5p: %m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="20 KB" />
+            </Policies>
+            <DefaultRolloverStrategy max="5" />
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="com.epam.petersburg.ncr41.app" level="debug" additivity="true">
+            <AppenderRef ref="my-log" level="debug"/>
+        </Logger>
+        <Root level="debug">
+            <AppenderRef ref="my-log" level="debug"/>
+        </Root>
+    </Loggers>
+</Configuration>
